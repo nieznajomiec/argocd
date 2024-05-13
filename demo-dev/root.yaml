@@ -8,6 +8,7 @@ metadata:
 spec:
   destination:
     name     : in-cluster
+    server: https://kubernetes.default.svc
     namespace: argocd
   source:
     path   : "demo-dev/applications"
@@ -15,6 +16,8 @@ spec:
     targetRevision: HEAD
   project: default
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
     automated:
       prune   : true
       selfHeal: true
